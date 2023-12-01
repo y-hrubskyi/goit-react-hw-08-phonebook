@@ -6,10 +6,10 @@ import { Title } from 'components/App.styled';
 const Contacts = () => {
   return (
     <>
-      <ContactForm />
       <Title>Contacts List</Title>
       <Filter />
       <ContactList />
+      <ContactForm />
     </>
   );
 };

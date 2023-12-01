@@ -1,15 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import toast from 'react-hot-toast';
 
 import { selectFilteredContacts } from 'redux/contacts/selectors';
-import {
-  deleteContact,
-  fetchContacts,
-  updateContact,
-} from 'redux/contacts/operations';
+import { fetchContacts } from 'redux/contacts/operations';
 
-import { ContactsList, ContactData, Button } from './ContactList.styled';
+import { ContactsList } from './ContactList.styled';
 import { useEffect } from 'react';
+import { Contact } from 'components/Contact/Contact';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -19,26 +15,11 @@ export const ContactList = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const deleteContactFoo = contactId => {
-    dispatch(deleteContact(contactId)).then(() =>
-      toast.success('Contact successfully deleted')
-    );
-  };
-
-  const contactList = contacts.map(contact => (
-    <li key={contact.id}>
-      <ContactData>
-        {contact.name}: {contact.number}
-      </ContactData>
-      <Button type="button" onClick={() => dispatch(updateContact(contact))}>
-        Edit
-      </Button>
-      {' | '}
-      <Button type="button" onClick={() => deleteContactFoo(contact.id)}>
-        Delete
-      </Button>
-    </li>
-  ));
-
-  return <ContactsList>{contactList}</ContactsList>;
+  return (
+    <ContactsList>
+      {contacts.map(contact => (
+        <Contact key={contact.id} contact={contact} />
+      ))}
+    </ContactsList>
+  );
 };
