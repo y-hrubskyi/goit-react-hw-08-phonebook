@@ -1,5 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from 'redux/operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  updateContact,
+} from 'redux/contacts/operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -28,15 +33,21 @@ export const contactsSlice = createSlice({
         state.items.push(action.payload);
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.isLoading = false;
         state.items = state.items.filter(item => item.id !== action.payload.id);
+      })
+      .addCase(updateContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = state.items.map(item =>
+          item.id === action.payload.id ? action.payload : item
+        );
       })
       .addMatcher(
         isAnyOf(
           fetchContacts.pending,
           addContact.pending,
-          deleteContact.pending
+          deleteContact.pending,
+          updateContact.pending
         ),
         handlePending
       )
@@ -44,7 +55,8 @@ export const contactsSlice = createSlice({
         isAnyOf(
           fetchContacts.rejected,
           addContact.rejected,
-          deleteContact.rejected
+          deleteContact.rejected,
+          updateContact.rejected
         ),
         handleRejected
       );

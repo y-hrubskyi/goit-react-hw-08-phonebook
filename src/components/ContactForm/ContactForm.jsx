@@ -4,8 +4,8 @@ import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
 import toast from 'react-hot-toast';
 
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 import { isInContacts } from 'helpers/isInContacts';
 
 import { Form, Label, Field, Button, ErrorMessage } from './ContactForm.styled';

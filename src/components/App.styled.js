@@ -5,9 +5,9 @@ export const AppWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  min-height: 100vh;
-  padding-top: ${p => p.theme.spacing(12)};
-  padding-bottom: ${p => p.theme.spacing(12)};
+  /* min-height: 100vh; */
+  /* padding-top: ${p => p.theme.spacing(12)};
+  padding-bottom: ${p => p.theme.spacing(12)}; */
 
   font-size: 20px;
   color: ${p => p.theme.colors.black};

@@ -1,24 +1,44 @@
-import { Toaster } from 'react-hot-toast';
+import { lazy, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from 'components/Layout';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/operations';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import { useAuth } from 'hooks/useAuth';
 
-import { ContactForm } from 'components/ContactForm/ContactForm';
-import { Filter } from 'components/Filter/Filter';
-import { ContactList } from 'components/ContactList/ContactList';
-
-import { GlobalStyle } from 'components/GlobalStyle';
-import { AppWrapper, PageTitle, Title } from 'components/App.styled';
+const HomePage = lazy(() => import('pages/Home'));
+const RegisterPage = lazy(() => import('pages/Register'));
+const LoginPage = lazy(() => import('pages/Login'));
+const ContactsPage = lazy(() => import('pages/Contacts'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
-    <AppWrapper>
-      <GlobalStyle />
-      <Toaster toastOptions={{ duration: 1500 }} />
-
-      <PageTitle>Phonebook</PageTitle>
-      <ContactForm />
-
-      <Title>Contacts</Title>
-      <Filter />
-      <ContactList />
-    </AppWrapper>
+    !isRefreshing && (
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="register"
+            element={<RestrictedRoute component={<RegisterPage />} />}
+          />
+          <Route
+            path="login"
+            element={<RestrictedRoute component={<LoginPage />} />}
+          />
+          <Route
+            path="contacts"
+            element={<PrivateRoute component={<ContactsPage />} />}
+          />
+        </Route>
+      </Routes>
+    )
   );
 };

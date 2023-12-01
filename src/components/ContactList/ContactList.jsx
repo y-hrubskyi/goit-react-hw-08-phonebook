@@ -1,8 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 
-import { selectFilteredContacts } from 'redux/selectors';
-import { deleteContact, fetchContacts } from 'redux/operations';
+import { selectFilteredContacts } from 'redux/contacts/selectors';
+import {
+  deleteContact,
+  fetchContacts,
+  updateContact,
+} from 'redux/contacts/operations';
 
 import { ContactsList, ContactData, Button } from './ContactList.styled';
 import { useEffect } from 'react';
@@ -26,6 +30,10 @@ export const ContactList = () => {
       <ContactData>
         {contact.name}: {contact.number}
       </ContactData>
+      <Button type="button" onClick={() => dispatch(updateContact(contact))}>
+        Edit
+      </Button>
+      {' | '}
       <Button type="button" onClick={() => deleteContactFoo(contact.id)}>
         Delete
       </Button>
