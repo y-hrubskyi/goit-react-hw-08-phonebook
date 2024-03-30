@@ -1,9 +1,9 @@
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { Title } from 'components/App.styled';
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
+import { Title } from './ContactsPage.styled';
 
 const Contacts = () => {
   const contacts = useSelector(selectContacts);
