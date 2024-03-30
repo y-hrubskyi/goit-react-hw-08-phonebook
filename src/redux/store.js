@@ -9,15 +9,15 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import { filterSlice } from 'redux/filter/slice';
-import { contactsSlice } from 'redux/contacts/slice';
-import { authReducer } from 'redux/auth/slice';
+import { authReducer } from './auth/slice';
+import { contactsReducer } from './contacts/slice';
+import { filterReducer } from './filter/slice';
 
 export const store = configureStore({
   reducer: {
-    contacts: contactsSlice.reducer,
-    filter: filterSlice.reducer,
     auth: authReducer,
+    contacts: contactsReducer,
+    filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
