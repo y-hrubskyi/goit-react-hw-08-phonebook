@@ -1,10 +1,14 @@
-import { Link } from './AuthNav.styled';
+import { Link, NavItem, NavList } from 'components/common/Nav.styled';
 
 export const AuthNav = () => {
   return (
-    <div>
-      <Link to="/register">Register</Link>
-      <Link to="/login">Login</Link>
-    </div>
+    <NavList>
+      <NavItem>
+        <Link to="/register">Register</Link>
+      </NavItem>
+      <NavItem>
+        <Link to="/login">Login</Link>
+      </NavItem>
+    </NavList>
   );
 };
