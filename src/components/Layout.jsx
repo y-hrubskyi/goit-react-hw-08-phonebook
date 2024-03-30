@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
-import { GlobalStyle } from './GlobalStyle';
+import { GlobalStyle } from 'styles/GlobalStyle';
 import { AppBar } from './AppBar/AppBar';
 import { AppWrapper } from './App.styled';
 
