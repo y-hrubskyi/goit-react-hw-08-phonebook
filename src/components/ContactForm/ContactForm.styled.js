@@ -31,7 +31,7 @@ export const Field = styled(FormikField)`
   font: inherit;
 
   border-radius: ${p => p.theme.radii.sm};
-  outline-color: ${p => p.theme.colors.blue};
+  outline-color: ${p => p.theme.colors.accent};
 `;
 
 export const ErrorMessage = styled(FormikError)`
@@ -52,7 +52,7 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${p => p.theme.colors.blue};
+    background-color: ${p => p.theme.colors.accent};
     color: ${p => p.theme.colors.white};
   }
 `;
