@@ -4,13 +4,8 @@ import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { logIn } from 'redux/auth/operations';
 
-import {
-  Button,
-  ErrorMessage,
-  Field,
-  Form,
-  Label,
-} from 'components/ContactForm/ContactForm.styled';
+import { Button, Form } from 'components/ContactForm/ContactForm.styled';
+import { FormField } from 'components/common/FormField/FormField';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email().required('Required'),
@@ -39,16 +34,8 @@ export const LoginForm = () => {
       validationSchema={loginSchema}
     >
       <Form>
-        <Label>
-          Email
-          <Field type="email" name="email" />
-          <ErrorMessage name="email" component="span" />
-        </Label>
-        <Label>
-          Password
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="span" />
-        </Label>
+        <FormField label="Email" type="email" name="email" />
+        <FormField label="Password" type="password" name="password" />
         <Button type="submit">Login</Button>
       </Form>
     </Formik>

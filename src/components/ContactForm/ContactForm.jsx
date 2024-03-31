@@ -7,9 +7,10 @@ import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import { isInContacts } from 'helpers/isInContacts';
 
-import { Form, Label, Field, Button, ErrorMessage } from './ContactForm.styled';
+import { Form, Button } from './ContactForm.styled';
 import { ModalBase } from 'components/ModalBase/ModalBase';
 import { useState } from 'react';
+import { FormField } from 'components/common/FormField/FormField';
 
 const contactsSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
@@ -57,17 +58,8 @@ export const ContactForm = () => {
           validationSchema={contactsSchema}
         >
           <Form>
-            <Label>
-              Name
-              <Field type="text" name="name" />
-              <ErrorMessage name="name" component="span" />
-            </Label>
-
-            <Label>
-              Number
-              <Field type="tel" name="number" />
-              <ErrorMessage name="number" component="span" />
-            </Label>
+            <FormField label="Name" type="text" name="name" />
+            <FormField label="Number" type="tel" name="number" />
 
             <Button type="submit">Add contact</Button>
           </Form>

@@ -4,13 +4,8 @@ import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { register } from 'redux/auth/operations';
 
-import {
-  Button,
-  ErrorMessage,
-  Field,
-  Form,
-  Label,
-} from 'components/ContactForm/ContactForm.styled';
+import { Button, Form } from 'components/ContactForm/ContactForm.styled';
+import { FormField } from 'components/common/FormField/FormField';
 
 const registerSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
@@ -40,21 +35,9 @@ export const RegisterForm = () => {
       validationSchema={registerSchema}
     >
       <Form>
-        <Label>
-          Name
-          <Field type="text" name="name" />
-          <ErrorMessage name="name" component="span" />
-        </Label>
-        <Label>
-          Email
-          <Field type="email" name="email" />
-          <ErrorMessage name="email" component="span" />
-        </Label>
-        <Label>
-          Password
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="span" />
-        </Label>
+        <FormField label="Name" type="text" name="name" />
+        <FormField label="Email" type="email" name="email" />
+        <FormField label="Password" type="password" name="password" />
         <Button type="submit">Sign Up</Button>
       </Form>
     </Formik>

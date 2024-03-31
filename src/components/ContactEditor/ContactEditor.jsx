@@ -1,17 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 
+import { selectIsModifyLoading } from 'redux/contacts/selectors';
 import { updateContact } from 'redux/contacts/operations';
+
 import { ModalBase } from 'components/ModalBase/ModalBase';
-import {
-  Form,
-  Label,
-  Field,
-  Button,
-  ErrorMessage,
-} from 'components/ContactForm/ContactForm.styled';
+import { Form, Button } from 'components/ContactForm/ContactForm.styled';
+import { FormField } from 'components/common/FormField/FormField';
 
 const contactsSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
@@ -24,6 +21,7 @@ export const ContactEditor = ({
   onClose,
 }) => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsModifyLoading);
 
   const handleSubmit = (values, actions) => {
     dispatch(updateContact({ ...values, id }))
@@ -46,19 +44,11 @@ export const ContactEditor = ({
         validationSchema={contactsSchema}
       >
         <Form>
-          <Label>
-            Name
-            <Field type="text" name="name" />
-            <ErrorMessage name="name" component="span" />
-          </Label>
-
-          <Label>
-            Number
-            <Field type="tel" name="number" />
-            <ErrorMessage name="number" component="span" />
-          </Label>
-
-          <Button type="submit">Update contact</Button>
+          <FormField label="Name" type="text" name="name" />
+          <FormField label="Number" type="tel" name="number" />
+          <Button type="submit">
+            {isLoading ? 'Updating...' : 'Update contact'}
+          </Button>
         </Form>
       </Formik>
     </ModalBase>
