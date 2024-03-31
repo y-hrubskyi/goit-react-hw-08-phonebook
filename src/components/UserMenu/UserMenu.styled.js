@@ -17,22 +17,6 @@ export const UserWrapper = styled.div`
   gap: ${p => p.theme.spacing(2)};
 `;
 
-export const UserAvatar = styled.p`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 36px;
-  height: 36px;
-
-  font-weight: 600;
-  font-size: 16px;
-  color: ${p => p.theme.colors.accent};
-
-  background: #b6e0b6;
-  border-radius: 50%;
-  border: 1px solid ${p => p.theme.colors.accent};
-`;
-
 export const UserName = styled.p`
   font-size: 16px;
   font-weight: 600;
