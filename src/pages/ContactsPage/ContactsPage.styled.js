@@ -7,5 +7,5 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin-bottom: ${p => p.theme.spacing(3)};
+  margin-bottom: ${p => p.theme.spacing(5)};
 `;

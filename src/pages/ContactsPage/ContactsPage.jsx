@@ -10,7 +10,7 @@ const Contacts = () => {
 
   return (
     <Wrapper>
-      <Title>Contacts List</Title>
+      <Title>Contact List</Title>
       {contacts.length > 0 && <Filter />}
       <ContactList />
       <ContactForm />
