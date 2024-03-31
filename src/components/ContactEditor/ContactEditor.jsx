@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 
@@ -7,7 +6,7 @@ import { selectIsModifyLoading } from 'redux/contacts/selectors';
 import { updateContact } from 'redux/contacts/operations';
 
 import { ModalBase } from 'components/ModalBase/ModalBase';
-import { Form } from 'components/ContactForm/ContactForm.styled';
+import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 
@@ -39,17 +38,15 @@ export const ContactEditor = ({
 
   return (
     <ModalBase isOpen={isOpen} onClose={onClose}>
-      <Formik
+      <FormBase
         initialValues={{ name, number }}
         onSubmit={handleSubmit}
         validationSchema={contactsSchema}
       >
-        <Form>
-          <FormField label="Name" type="text" name="name" />
-          <FormField label="Number" type="tel" name="number" />
-          <SubmitBtn>{isLoading ? 'Updating...' : 'Update contact'}</SubmitBtn>
-        </Form>
-      </Formik>
+        <FormField label="Name" type="text" name="name" />
+        <FormField label="Number" type="tel" name="number" />
+        <SubmitBtn>{isLoading ? 'Updating...' : 'Update contact'}</SubmitBtn>
+      </FormBase>
     </ModalBase>
   );
 };

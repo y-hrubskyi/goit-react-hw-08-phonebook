@@ -1,10 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { Formik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { logIn } from 'redux/auth/operations';
 
-import { Form } from 'components/ContactForm/ContactForm.styled';
+import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 
@@ -29,16 +28,14 @@ export const LoginForm = () => {
   };
 
   return (
-    <Formik
+    <FormBase
       initialValues={{ email: '', password: '' }}
       onSubmit={handleSubmit}
       validationSchema={loginSchema}
     >
-      <Form>
-        <FormField label="Email" type="email" name="email" />
-        <FormField label="Password" type="password" name="password" />
-        <SubmitBtn>Login</SubmitBtn>
-      </Form>
-    </Formik>
+      <FormField label="Email" type="email" name="email" />
+      <FormField label="Password" type="password" name="password" />
+      <SubmitBtn>Login</SubmitBtn>
+    </FormBase>
   );
 };

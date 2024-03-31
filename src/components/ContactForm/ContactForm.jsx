@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 
@@ -7,9 +6,9 @@ import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import { isInContacts } from 'helpers/isInContacts';
 
-import { Form, Button } from './ContactForm.styled';
 import { ModalBase } from 'components/ModalBase/ModalBase';
 import { useState } from 'react';
+import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 
@@ -49,21 +48,19 @@ export const ContactForm = () => {
 
   return (
     <>
-      <Button type="button" onClick={toggleModal}>
+      <button type="button" onClick={toggleModal}>
         ➕
-      </Button>
+      </button>
       <ModalBase isOpen={modalIsOpen} onClose={toggleModal}>
-        <Formik
+        <FormBase
           initialValues={{ name: '', number: '' }}
           onSubmit={handleSubmit}
           validationSchema={contactsSchema}
         >
-          <Form>
-            <FormField label="Name" type="text" name="name" />
-            <FormField label="Number" type="tel" name="number" />
-            <SubmitBtn>Add contact</SubmitBtn>
-          </Form>
-        </Formik>
+          <FormField label="Name" type="text" name="name" />
+          <FormField label="Number" type="tel" name="number" />
+          <SubmitBtn>Add contact</SubmitBtn>
+        </FormBase>
       </ModalBase>
     </>
   );
