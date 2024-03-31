@@ -12,6 +12,7 @@ import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 import { IconBtn } from 'components/common/IconBtn/IconBtn';
+import { AddIcon } from './ContactForm.styled';
 
 const contactsSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
@@ -50,7 +51,7 @@ export const ContactForm = () => {
   return (
     <>
       <IconBtn type="button" onClick={toggleModal}>
-        ➕
+        <AddIcon />
       </IconBtn>
       <ModalBase isOpen={modalIsOpen} onClose={toggleModal}>
         <FormBase
