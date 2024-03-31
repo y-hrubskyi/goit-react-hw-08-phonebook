@@ -1,8 +1,4 @@
-import {
-  Form as FormikForm,
-  Field as FormikField,
-  ErrorMessage as FormikError,
-} from 'formik';
+import { Form as FormikForm } from 'formik';
 import styled from 'styled-components';
 
 export const Title = styled.h2`
@@ -19,22 +15,4 @@ export const Form = styled(FormikForm)`
 
   border: 1px solid ${p => p.theme.colors.black};
   border-radius: ${p => p.theme.radii.md};
-`;
-
-export const Button = styled.button`
-  display: block;
-  margin: 0 auto;
-  padding: ${p => p.theme.spacing(1)} ${p => p.theme.spacing(3)};
-
-  border-radius: ${p => p.theme.radii.md};
-  background-color: transparent;
-
-  transition: ${p => p.theme.transition('color')},
-    ${p => p.theme.transition('background-color')};
-
-  &:hover,
-  &:focus {
-    background-color: ${p => p.theme.colors.accent};
-    color: ${p => p.theme.colors.white};
-  }
 `;

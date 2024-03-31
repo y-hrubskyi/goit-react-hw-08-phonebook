@@ -11,6 +11,7 @@ import { Form, Button } from './ContactForm.styled';
 import { ModalBase } from 'components/ModalBase/ModalBase';
 import { useState } from 'react';
 import { FormField } from 'components/common/FormField/FormField';
+import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 
 const contactsSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
@@ -60,8 +61,7 @@ export const ContactForm = () => {
           <Form>
             <FormField label="Name" type="text" name="name" />
             <FormField label="Number" type="tel" name="number" />
-
-            <Button type="submit">Add contact</Button>
+            <SubmitBtn>Add contact</SubmitBtn>
           </Form>
         </Formik>
       </ModalBase>

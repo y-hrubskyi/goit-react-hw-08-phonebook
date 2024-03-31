@@ -7,8 +7,9 @@ import { selectIsModifyLoading } from 'redux/contacts/selectors';
 import { updateContact } from 'redux/contacts/operations';
 
 import { ModalBase } from 'components/ModalBase/ModalBase';
-import { Form, Button } from 'components/ContactForm/ContactForm.styled';
+import { Form } from 'components/ContactForm/ContactForm.styled';
 import { FormField } from 'components/common/FormField/FormField';
+import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 
 const contactsSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
@@ -46,9 +47,7 @@ export const ContactEditor = ({
         <Form>
           <FormField label="Name" type="text" name="name" />
           <FormField label="Number" type="tel" name="number" />
-          <Button type="submit">
-            {isLoading ? 'Updating...' : 'Update contact'}
-          </Button>
+          <SubmitBtn>{isLoading ? 'Updating...' : 'Update contact'}</SubmitBtn>
         </Form>
       </Formik>
     </ModalBase>
