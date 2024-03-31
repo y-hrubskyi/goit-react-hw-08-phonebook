@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 import * as SC from './UserMenu.styled';
+import { IconBtn } from 'components/common/IconBtn/IconBtn';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,9 @@ export const UserMenu = () => {
         <SC.UserAvatar>{user.name[0]}</SC.UserAvatar>
         <SC.UserName>{user.name}</SC.UserName>
       </SC.UserWrapper>
-      <SC.Btn type="button" onClick={handleLogout}>
+      <IconBtn type="button" onClick={handleLogout}>
         <SC.LogoutIcon />
-      </SC.Btn>
+      </IconBtn>
     </SC.Wrapper>
   );
 };

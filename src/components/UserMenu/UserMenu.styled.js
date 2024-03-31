@@ -38,29 +38,6 @@ export const UserName = styled.p`
   font-weight: 600;
 `;
 
-export const Btn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 36px;
-  height: 36px;
-
-  color: ${p => p.theme.colors.accent};
-
-  background-color: ${p => p.theme.colors.white};
-  border-radius: ${p => p.theme.radii.md};
-  border: 1px solid ${p => p.theme.colors.accent};
-
-  transition: ${p => p.theme.transition('color')},
-    ${p => p.theme.transition('background-color')};
-
-  &:hover,
-  &:focus {
-    color: ${p => p.theme.colors.white};
-    background-color: ${p => p.theme.colors.accent};
-  }
-`;
-
 export const LogoutIcon = styled(Logout)`
   width: 20px;
   height: 20px;
