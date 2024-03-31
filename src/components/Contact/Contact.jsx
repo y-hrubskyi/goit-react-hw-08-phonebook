@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 
 import { deleteContact } from 'redux/contacts/operations';
-import { Button, ContactData } from './Contact.styled';
+import { ContactData, DeleteIcon, EditIcon } from './Contact.styled';
 import { ContactEditor } from 'components/ContactEditor/ContactEditor';
+import { IconBtn } from 'components/common/IconBtn/IconBtn';
 
 export const Contact = ({ contact }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -25,13 +26,12 @@ export const Contact = ({ contact }) => {
       <ContactData>
         {contact.name}: {contact.number}
       </ContactData>
-      <Button type="button" onClick={toggleModal}>
-        Edit
-      </Button>
-      {' | '}
-      <Button type="button" onClick={() => deleteContactFoo(contact.id)}>
-        Delete
-      </Button>
+      <IconBtn type="button" onClick={toggleModal}>
+        <EditIcon />
+      </IconBtn>
+      <IconBtn type="button" onClick={() => deleteContactFoo(contact.id)}>
+        <DeleteIcon />
+      </IconBtn>
       <ContactEditor
         isOpen={modalIsOpen}
         onClose={toggleModal}
