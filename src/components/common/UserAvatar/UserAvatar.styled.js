@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getRandomHexColor } from 'helpers/getRandomHexColor';
 
 export const UserAvatar = styled.p`
   display: flex;
@@ -9,9 +10,9 @@ export const UserAvatar = styled.p`
 
   font-weight: 600;
   font-size: 16px;
-  color: ${p => p.theme.colors.accent};
+  color: ${p => p.theme.colors.white};
 
-  background: #b6e0b6;
+  background: ${() => getRandomHexColor()};
   border-radius: 50%;
   border: 1px solid ${p => p.theme.colors.accent};
 `;

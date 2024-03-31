@@ -4,7 +4,6 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   gap: ${p => p.theme.spacing(1)};
-  margin-bottom: ${p => p.theme.spacing(5)};
 
   font-size: 18px;
   font-weight: 500;

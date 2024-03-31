@@ -3,14 +3,14 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
-import { Title, Wrapper } from './ContactsPage.styled';
+import { Wrapper } from './ContactsPage.styled';
 
 const Contacts = () => {
   const contacts = useSelector(selectContacts);
 
   return (
     <Wrapper>
-      <Title>Contact List</Title>
+      <h2>Contact List</h2>
       {contacts.length > 0 && <Filter />}
       <ContactList />
       <ContactForm />
