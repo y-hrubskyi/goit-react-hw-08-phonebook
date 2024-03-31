@@ -4,6 +4,7 @@ export const theme = {
     black: '#212112',
     red: 'red',
     accent: 'green',
+    bg: '#e1ede5',
   },
   radii: {
     sm: '4px',

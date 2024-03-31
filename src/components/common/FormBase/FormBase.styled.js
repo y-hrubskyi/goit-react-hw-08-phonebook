@@ -6,9 +6,10 @@ export const Form = styled(FormikForm)`
   flex-direction: column;
   align-items: flex-start;
   gap: ${p => p.theme.spacing(5)};
-  padding: ${p => p.theme.spacing(3)};
-  margin-bottom: ${p => p.theme.spacing(5)};
+  width: 320px;
+  padding: ${p => p.theme.spacing(6)};
 
-  border: 1px solid ${p => p.theme.colors.black};
-  border-radius: ${p => p.theme.radii.md};
+  background-color: ${p => p.theme.colors.white};
+  border: 2px solid ${p => p.theme.colors.bg};
+  border-radius: ${p => p.theme.radii.lg};
 `;

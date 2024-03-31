@@ -25,6 +25,7 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   color: ${p => p.theme.colors.black};
 
+  background-color: ${p => p.theme.colors.white};
   border: 1px solid ${p => p.theme.colors.accent};
   border-radius: ${p => p.theme.radii.lg};
 
