@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { selectIsModifyLoading } from 'redux/contacts/selectors';
 import { updateContact } from 'redux/contacts/operations';
 
-import { ModalBase } from 'components/ModalBase/ModalBase';
+import { ModalBase } from 'components/common/ModalBase/ModalBase';
 import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
