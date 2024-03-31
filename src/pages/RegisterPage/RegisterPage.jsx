@@ -1,10 +1,11 @@
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import { AuthFormWrapper } from 'components/common/AuthFormWrapper/AuthFormWrapper.styled';
 
 const RegisterPage = () => {
   return (
-    <div>
+    <AuthFormWrapper>
       <RegisterForm />
-    </div>
+    </AuthFormWrapper>
   );
 };
 

@@ -1,10 +1,11 @@
 import { LoginForm } from 'components/LoginForm/LoginForm';
+import { AuthFormWrapper } from 'components/common/AuthFormWrapper/AuthFormWrapper.styled';
 
 const LoginPage = () => {
   return (
-    <div>
+    <AuthFormWrapper>
       <LoginForm />
-    </div>
+    </AuthFormWrapper>
   );
 };
 
