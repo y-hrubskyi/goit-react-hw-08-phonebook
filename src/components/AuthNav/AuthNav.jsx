@@ -1,4 +1,4 @@
-import { Link, NavItem, NavList } from 'components/common/Nav.styled';
+import { Link, NavItem, NavList } from 'components/common/Nav/Nav.styled';
 
 export const AuthNav = () => {
   return (

@@ -1,4 +1,4 @@
-import { Link, NavItem, NavList } from 'components/common/Nav.styled';
+import { Link, NavItem, NavList } from 'components/common/Nav/Nav.styled';
 import { useAuth } from 'hooks/useAuth';
 
 export const Navigation = () => {
