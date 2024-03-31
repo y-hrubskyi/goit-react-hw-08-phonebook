@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { updateFilter } from 'redux/filter/slice';
 import { selectFilter } from 'redux/filter/selectors';
-
 import { Input, Label } from './Filter.styled';
 
 export const Filter = () => {
@@ -15,7 +14,7 @@ export const Filter = () => {
 
   return (
     <Label>
-      Find contacts by name
+      Find by name
       <Input type="text" name="filter" value={filter} onChange={handleChange} />
     </Label>
   );

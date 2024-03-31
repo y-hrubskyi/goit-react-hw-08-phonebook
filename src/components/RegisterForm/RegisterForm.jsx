@@ -1,16 +1,11 @@
 import { useDispatch } from 'react-redux';
-import { Formik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { register } from 'redux/auth/operations';
 
-import {
-  Button,
-  ErrorMessage,
-  Field,
-  Form,
-  Label,
-} from 'components/ContactForm/ContactForm.styled';
+import { FormBase } from 'components/common/FormBase/FormBase';
+import { FormField } from 'components/common/FormField/FormField';
+import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 
 const registerSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
@@ -34,29 +29,15 @@ export const RegisterForm = () => {
   };
 
   return (
-    <Formik
+    <FormBase
       initialValues={{ name: '', email: '', password: '' }}
       onSubmit={handleSubmit}
       validationSchema={registerSchema}
     >
-      <Form>
-        <Label>
-          Name
-          <Field type="text" name="name" />
-          <ErrorMessage name="name" component="span" />
-        </Label>
-        <Label>
-          Email
-          <Field type="email" name="email" />
-          <ErrorMessage name="email" component="span" />
-        </Label>
-        <Label>
-          Password
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="span" />
-        </Label>
-        <Button type="submit">Sign Up</Button>
-      </Form>
-    </Formik>
+      <FormField label="Name" type="text" name="name" />
+      <FormField label="Email" type="email" name="email" />
+      <FormField label="Password" type="password" name="password" />
+      <SubmitBtn>Sign Up</SubmitBtn>
+    </FormBase>
   );
 };

@@ -2,12 +2,9 @@ export const theme = {
   colors: {
     white: '#fafafa',
     black: '#212112',
-    green: 'green',
-    blue: 'blue',
     red: 'red',
-    orange: 'orange',
-    teal: 'teal',
-    accent: 'purple',
+    accent: 'green',
+    bg: '#e1ede5',
   },
   radii: {
     sm: '4px',

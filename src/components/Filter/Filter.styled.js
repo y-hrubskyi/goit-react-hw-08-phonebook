@@ -3,12 +3,19 @@ import styled from 'styled-components';
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: ${p => p.theme.spacing(1)};
+
+  font-size: 18px;
+  font-weight: 500;
 `;
 
 export const Input = styled.input`
-  margin-bottom: ${p => p.theme.spacing(5)};
+  padding: ${p => p.theme.spacing(2)} ${p => p.theme.spacing(4)};
 
-  border-radius: ${p => p.theme.radii.sm};
-  outline-color: ${p => p.theme.colors.blue};
+  font-size: 18px;
+  color: ${p => p.theme.colors.black};
+
+  background: ${p => p.theme.colors.white};
+  border: none;
+  border-radius: ${p => p.theme.radii.md};
 `;

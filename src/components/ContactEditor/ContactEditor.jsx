@@ -1,17 +1,14 @@
-import { useDispatch } from 'react-redux';
-import { Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 
+import { selectIsModifyLoading } from 'redux/contacts/selectors';
 import { updateContact } from 'redux/contacts/operations';
-import { ModalBase } from 'components/ModalBase/ModalBase';
-import {
-  Form,
-  Label,
-  Field,
-  Button,
-  ErrorMessage,
-} from 'components/ContactForm/ContactForm.styled';
+
+import { ModalBase } from 'components/common/ModalBase/ModalBase';
+import { FormBase } from 'components/common/FormBase/FormBase';
+import { FormField } from 'components/common/FormField/FormField';
+import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 
 const contactsSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
@@ -24,6 +21,7 @@ export const ContactEditor = ({
   onClose,
 }) => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsModifyLoading);
 
   const handleSubmit = (values, actions) => {
     dispatch(updateContact({ ...values, id }))
@@ -40,27 +38,15 @@ export const ContactEditor = ({
 
   return (
     <ModalBase isOpen={isOpen} onClose={onClose}>
-      <Formik
+      <FormBase
         initialValues={{ name, number }}
         onSubmit={handleSubmit}
         validationSchema={contactsSchema}
       >
-        <Form>
-          <Label>
-            Name
-            <Field type="text" name="name" />
-            <ErrorMessage name="name" component="span" />
-          </Label>
-
-          <Label>
-            Number
-            <Field type="tel" name="number" />
-            <ErrorMessage name="number" component="span" />
-          </Label>
-
-          <Button type="submit">Update contact</Button>
-        </Form>
-      </Formik>
+        <FormField label="Name" type="text" name="name" />
+        <FormField label="Number" type="tel" name="number" />
+        <SubmitBtn>{isLoading ? 'Updating...' : 'Update contact'}</SubmitBtn>
+      </FormBase>
     </ModalBase>
   );
 };

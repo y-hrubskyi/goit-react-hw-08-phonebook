@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Formik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 
@@ -7,9 +7,12 @@ import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import { isInContacts } from 'helpers/isInContacts';
 
-import { Form, Label, Field, Button, ErrorMessage } from './ContactForm.styled';
-import { ModalBase } from 'components/ModalBase/ModalBase';
-import { useState } from 'react';
+import { ModalBase } from 'components/common/ModalBase/ModalBase';
+import { FormBase } from 'components/common/FormBase/FormBase';
+import { FormField } from 'components/common/FormField/FormField';
+import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
+import { IconBtn } from 'components/common/IconBtn/IconBtn';
+import { AddIcon } from './ContactForm.styled';
 
 const contactsSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
@@ -47,31 +50,19 @@ export const ContactForm = () => {
 
   return (
     <>
-      <Button type="button" onClick={toggleModal}>
-        ➕
-      </Button>
+      <IconBtn type="button" onClick={toggleModal}>
+        <AddIcon />
+      </IconBtn>
       <ModalBase isOpen={modalIsOpen} onClose={toggleModal}>
-        <Formik
+        <FormBase
           initialValues={{ name: '', number: '' }}
           onSubmit={handleSubmit}
           validationSchema={contactsSchema}
         >
-          <Form>
-            <Label>
-              Name
-              <Field type="text" name="name" />
-              <ErrorMessage name="name" component="span" />
-            </Label>
-
-            <Label>
-              Number
-              <Field type="tel" name="number" />
-              <ErrorMessage name="number" component="span" />
-            </Label>
-
-            <Button type="submit">Add contact</Button>
-          </Form>
-        </Formik>
+          <FormField label="Name" type="text" name="name" />
+          <FormField label="Number" type="tel" name="number" />
+          <SubmitBtn>Add contact</SubmitBtn>
+        </FormBase>
       </ModalBase>
     </>
   );
