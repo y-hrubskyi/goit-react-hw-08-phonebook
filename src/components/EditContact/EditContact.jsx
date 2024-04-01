@@ -9,6 +9,7 @@ import { ModalBase } from 'components/common/ModalBase/ModalBase';
 import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
+import { ToastMessage } from 'components/common/ToastMessage/ToastMessage';
 
 export const EditContact = ({
   contact: { id, name, number },
@@ -18,17 +19,14 @@ export const EditContact = ({
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsModifyLoading);
 
-  const handleSubmit = (values, actions) => {
-    dispatch(updateContact({ ...values, id }))
-      .unwrap()
-      .then(() => {
-        actions.resetForm();
-        toast.success('Successfully updated');
-        onClose();
-      })
-      .catch(error => {
-        toast.error(`Oops.. ${error}`);
-      });
+  const handleSubmit = async (values, actions) => {
+    await toast.promise(dispatch(updateContact({ ...values, id })).unwrap(), {
+      loading: 'Updating contact...',
+      success: <ToastMessage>Contact updated successful!</ToastMessage>,
+      error: <ToastMessage>Update failed. Try again.</ToastMessage>,
+    });
+    actions.resetForm();
+    onClose();
   };
 
   return (
@@ -40,7 +38,7 @@ export const EditContact = ({
       >
         <FormField label="Name" type="text" name="name" />
         <FormField label="Number" type="tel" name="number" />
-        <SubmitBtn>{isLoading ? 'Updating...' : 'Update contact'}</SubmitBtn>
+        <SubmitBtn isLoading={isLoading}>Update contact</SubmitBtn>
       </FormBase>
     </ModalBase>
   );

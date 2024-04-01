@@ -1,25 +1,30 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 
+import { selectIsModifyLoading } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
 
 import { EditContact } from 'components/EditContact/EditContact';
 import { UserAvatar } from 'components/common/UserAvatar/UserAvatar.styled';
+import { ToastMessage } from 'components/common/ToastMessage/ToastMessage';
 import * as SC from './ContactItem.styled';
 
 export const ContactItem = ({ contact }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsModifyLoading);
 
   const toggleModal = () => {
     setIsOpen(prevState => !prevState);
   };
 
-  const deleteContactFoo = contactId => {
-    dispatch(deleteContact(contactId)).then(() =>
-      toast.success('Contact successfully deleted')
-    );
+  const deleteContactFoo = async contactId => {
+    await toast.promise(dispatch(deleteContact(contactId)).unwrap(), {
+      loading: 'Deleting contact...',
+      success: <ToastMessage>Contact deleted successful!</ToastMessage>,
+      error: <ToastMessage>Failed to delete contact. Try again.</ToastMessage>,
+    });
   };
 
   return (
@@ -34,12 +39,16 @@ export const ContactItem = ({ contact }) => {
         <SC.ContactNumber>{contact.number}</SC.ContactNumber>
       </SC.TBodyData>
       <SC.TBodyData>
-        <SC.IconBtn type="button" onClick={toggleModal}>
+        <SC.IconBtn type="button" onClick={toggleModal} disabled={isLoading}>
           <SC.EditIcon />
         </SC.IconBtn>
       </SC.TBodyData>
       <SC.TBodyData>
-        <SC.IconBtn type="button" onClick={() => deleteContactFoo(contact.id)}>
+        <SC.IconBtn
+          type="button"
+          onClick={() => deleteContactFoo(contact.id)}
+          disabled={isLoading}
+        >
           <SC.DeleteIcon />
         </SC.IconBtn>
       </SC.TBodyData>
