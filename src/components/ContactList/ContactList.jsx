@@ -10,7 +10,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { selectFilter } from 'redux/filter/selectors';
 
 import { Table, Placeholder } from './ContactList.styled';
-import { Contact } from 'components/Contact/Contact';
+import { ContactItem } from 'components/ContactItem/ContactItem';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export const ContactList = () => {
         <Table>
           <tbody>
             {contacts.map(contact => (
-              <Contact key={contact.id} contact={contact} />
+              <ContactItem key={contact.id} contact={contact} />
             ))}
           </tbody>
         </Table>

@@ -5,9 +5,9 @@ import toast from 'react-hot-toast';
 import { deleteContact } from 'redux/contacts/operations';
 import { ContactEditor } from 'components/ContactEditor/ContactEditor';
 import { UserAvatar } from 'components/common/UserAvatar/UserAvatar.styled';
-import * as SC from './Contact.styled';
+import * as SC from './ContactItem.styled';
 
-export const Contact = ({ contact }) => {
+export const ContactItem = ({ contact }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
