@@ -53,17 +53,19 @@ export const ContactForm = () => {
       <IconBtn type="button" onClick={toggleModal}>
         <AddIcon />
       </IconBtn>
-      <ModalBase isOpen={modalIsOpen} onClose={toggleModal}>
-        <FormBase
-          initialValues={{ name: '', number: '' }}
-          onSubmit={handleSubmit}
-          validationSchema={contactsSchema}
-        >
-          <FormField label="Name" type="text" name="name" />
-          <FormField label="Number" type="tel" name="number" />
-          <SubmitBtn>Add contact</SubmitBtn>
-        </FormBase>
-      </ModalBase>
+      {modalIsOpen && (
+        <ModalBase isOpen={modalIsOpen} onClose={toggleModal}>
+          <FormBase
+            initialValues={{ name: '', number: '' }}
+            onSubmit={handleSubmit}
+            validationSchema={contactsSchema}
+          >
+            <FormField label="Name" type="text" name="name" />
+            <FormField label="Number" type="tel" name="number" />
+            <SubmitBtn>Add contact</SubmitBtn>
+          </FormBase>
+        </ModalBase>
+      )}
     </>
   );
 };
