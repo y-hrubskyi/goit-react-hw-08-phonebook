@@ -1,16 +1,12 @@
 import { useDispatch } from 'react-redux';
-import * as Yup from 'yup';
 import toast from 'react-hot-toast';
+
 import { logIn } from 'redux/auth/operations';
+import { loginSchema } from 'constants/validation/loginSchema';
 
 import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
-
-const loginSchema = Yup.object().shape({
-  email: Yup.string().email().required('Required'),
-  password: Yup.string().min(7, 'Must be 7 or more').required('Required'),
-});
 
 export const LoginForm = () => {
   const dispatch = useDispatch();

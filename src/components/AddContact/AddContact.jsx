@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
+import { contactSchema } from 'constants/validation/contactSchema';
 import { isInContacts } from 'helpers/isInContacts';
 
 import { ModalBase } from 'components/common/ModalBase/ModalBase';
@@ -13,11 +13,6 @@ import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 import { IconBtn } from 'components/common/IconBtn/IconBtn';
 import { AddIcon } from './AddContact.styled';
-
-const contactsSchema = Yup.object().shape({
-  name: Yup.string().min(2, 'Too Short').required('Required'),
-  number: Yup.string().min(7, 'Must be 7 or more').required('Required'),
-});
 
 export const AddContact = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -58,7 +53,7 @@ export const AddContact = () => {
           <FormBase
             initialValues={{ name: '', number: '' }}
             onSubmit={handleSubmit}
-            validationSchema={contactsSchema}
+            validationSchema={contactSchema}
           >
             <FormField label="Name" type="text" name="name" />
             <FormField label="Number" type="tel" name="number" />

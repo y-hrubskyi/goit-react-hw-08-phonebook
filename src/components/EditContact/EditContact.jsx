@@ -1,19 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 
 import { selectIsModifyLoading } from 'redux/contacts/selectors';
 import { updateContact } from 'redux/contacts/operations';
+import { contactSchema } from 'constants/validation/contactSchema';
 
 import { ModalBase } from 'components/common/ModalBase/ModalBase';
 import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
-
-const contactsSchema = Yup.object().shape({
-  name: Yup.string().min(2, 'Too Short').required('Required'),
-  number: Yup.string().min(7, 'Must be 7 or more').required('Required'),
-});
 
 export const EditContact = ({
   contact: { id, name, number },
@@ -41,7 +36,7 @@ export const EditContact = ({
       <FormBase
         initialValues={{ name, number }}
         onSubmit={handleSubmit}
-        validationSchema={contactsSchema}
+        validationSchema={contactSchema}
       >
         <FormField label="Name" type="text" name="name" />
         <FormField label="Number" type="tel" name="number" />
