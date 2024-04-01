@@ -30,6 +30,7 @@ export const IconBtn = styled.button`
   align-items: center;
   width: 30px;
   height: 30px;
+  padding: 0;
 
   color: ${p => p.theme.colors.accent};
 

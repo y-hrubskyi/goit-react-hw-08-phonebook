@@ -23,6 +23,7 @@ export const AddBtn = styled.button`
   align-items: center;
   width: 36px;
   height: 36px;
+  padding: 0;
 
   color: ${p => p.theme.colors.accent};
 
