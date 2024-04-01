@@ -10,19 +10,32 @@ export const Filter = () => {
   const filter = useSelector(selectFilter);
 
   const handleChange = e => {
-    dispatch(updateFilter(e.target.value));
+    const { name, value } = e.target;
+    dispatch(updateFilter({ name, value }));
   };
 
   return (
-    <Label>
-      Find by name
-      <Input
-        type="text"
-        name="filter"
-        value={filter}
-        onChange={handleChange}
-        placeholder="Type name here..."
-      />
-    </Label>
+    <>
+      <Label>
+        Find by name
+        <Input
+          type="text"
+          name="name"
+          value={filter.name}
+          onChange={handleChange}
+          placeholder="Type name here..."
+        />
+      </Label>
+      <Label>
+        Find by number
+        <Input
+          type="text"
+          name="number"
+          value={filter.number}
+          onChange={handleChange}
+          placeholder="Type number here..."
+        />
+      </Label>
+    </>
   );
 };

@@ -12,10 +12,12 @@ export const selectModifyError = state => state.contacts.modifyError;
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],
   (contacts, filter) => {
-    const formattedFilter = filter.toLowerCase();
+    const formattedFilter = filter.name.toLowerCase();
 
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(formattedFilter)
+    return contacts.filter(
+      ({ name, number }) =>
+        name.toLowerCase().includes(formattedFilter) &&
+        number.includes(filter.number)
     );
   }
 );
