@@ -1,21 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
-import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 
 import { selectIsModifyLoading } from 'redux/contacts/selectors';
 import { updateContact } from 'redux/contacts/operations';
+import { contactSchema } from 'constants/validation/contactSchema';
 
 import { ModalBase } from 'components/common/ModalBase/ModalBase';
 import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
+import { ToastMessage } from 'components/common/ToastMessage/ToastMessage';
 
-const contactsSchema = Yup.object().shape({
-  name: Yup.string().min(2, 'Too Short').required('Required'),
-  number: Yup.string().min(7, 'Must be 7 or more').required('Required'),
-});
-
-export const ContactEditor = ({
+export const EditContact = ({
   contact: { id, name, number },
   isOpen,
   onClose,
@@ -23,17 +19,14 @@ export const ContactEditor = ({
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsModifyLoading);
 
-  const handleSubmit = (values, actions) => {
-    dispatch(updateContact({ ...values, id }))
-      .unwrap()
-      .then(() => {
-        actions.resetForm();
-        toast.success('Successfully updated');
-        onClose();
-      })
-      .catch(error => {
-        toast.error(`Oops.. ${error}`);
-      });
+  const handleSubmit = async (values, actions) => {
+    await toast.promise(dispatch(updateContact({ ...values, id })).unwrap(), {
+      loading: 'Updating contact...',
+      success: <ToastMessage>Contact updated successful!</ToastMessage>,
+      error: <ToastMessage>Update failed. Try again.</ToastMessage>,
+    });
+    actions.resetForm();
+    onClose();
   };
 
   return (
@@ -41,11 +34,11 @@ export const ContactEditor = ({
       <FormBase
         initialValues={{ name, number }}
         onSubmit={handleSubmit}
-        validationSchema={contactsSchema}
+        validationSchema={contactSchema}
       >
         <FormField label="Name" type="text" name="name" />
         <FormField label="Number" type="tel" name="number" />
-        <SubmitBtn>{isLoading ? 'Updating...' : 'Update contact'}</SubmitBtn>
+        <SubmitBtn isLoading={isLoading}>Update contact</SubmitBtn>
       </FormBase>
     </ModalBase>
   );

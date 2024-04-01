@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
 
-import { UserAvatar } from 'components/common/UserAvatar/UserAvatar.styled';
 import { IconBtn } from 'components/common/IconBtn/IconBtn';
-import { LogoutIcon, UserName, UserWrapper, Wrapper } from './UserMenu.styled';
+import { UserAvatar } from 'components/common/UserAvatar/UserAvatar.styled';
+import * as SC from './UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -16,14 +16,14 @@ export const UserMenu = () => {
   };
 
   return (
-    <Wrapper>
-      <UserWrapper>
+    <SC.Wrapper>
+      <SC.UserWrapper>
         <UserAvatar>{user.name[0]}</UserAvatar>
-        <UserName>{user.name}</UserName>
-      </UserWrapper>
+        <SC.UserName>{user.name}</SC.UserName>
+      </SC.UserWrapper>
       <IconBtn type="button" onClick={handleLogout}>
-        <LogoutIcon />
+        <SC.LogoutIcon />
       </IconBtn>
-    </Wrapper>
+    </SC.Wrapper>
   );
 };

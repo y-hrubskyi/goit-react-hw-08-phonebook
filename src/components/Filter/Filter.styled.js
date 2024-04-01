@@ -15,7 +15,7 @@ export const Input = styled.input`
   font-size: 18px;
   color: ${p => p.theme.colors.black};
 
-  background: ${p => p.theme.colors.white};
+  background: ${p => p.theme.colors.bg};
   border: none;
   border-radius: ${p => p.theme.radii.md};
 `;

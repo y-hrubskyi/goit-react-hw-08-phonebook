@@ -1,17 +1,24 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectFilteredContacts } from 'redux/contacts/selectors';
+import {
+  selectGetError,
+  selectFilteredContacts,
+  selectIsGetLoading,
+} from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectFilter } from 'redux/filter/selectors';
 
-import { ContactsList } from './ContactList.styled';
-import { Contact } from 'components/Contact/Contact';
+import { ContactItem } from 'components/ContactItem/ContactItem';
+import { Table, Placeholder } from './ContactList.styled';
+import { Loader } from 'components/common/Loader/Loader';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectFilteredContacts);
   const filter = useSelector(selectFilter);
+  const isLoading = useSelector(selectIsGetLoading);
+  const error = useSelector(selectGetError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -19,16 +26,26 @@ export const ContactList = () => {
 
   let filterInfo = '';
   const results = contacts.length;
-  if (!results && !filter) filterInfo = <p>Your contact list is empty</p>;
-  if (!results && filter) filterInfo = <p>Not Finded</p>;
+  if (!results && !filter && !error && !isLoading)
+    filterInfo = 'Your contact list is empty';
+  if (!results && filter && !error && !isLoading)
+    filterInfo = 'No contacts found';
 
-  return contacts.length ? (
-    <ContactsList>
-      {contacts.map(contact => (
-        <Contact key={contact.id} contact={contact} />
-      ))}
-    </ContactsList>
-  ) : (
-    filterInfo
+  return (
+    <>
+      {isLoading && <Loader />}
+      {error && <Placeholder>Oops! Something went wrong</Placeholder>}
+      {!isLoading && !error && contacts.length ? (
+        <Table>
+          <tbody>
+            {contacts.map(contact => (
+              <ContactItem key={contact.id} contact={contact} />
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+        <Placeholder>{filterInfo}</Placeholder>
+      )}
+    </>
   );
 };

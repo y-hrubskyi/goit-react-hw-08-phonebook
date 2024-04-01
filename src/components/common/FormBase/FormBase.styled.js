@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { Form as FormikForm } from 'formik';
 
 export const Form = styled(FormikForm)`
@@ -10,6 +11,6 @@ export const Form = styled(FormikForm)`
   padding: ${p => p.theme.spacing(6)};
 
   background-color: ${p => p.theme.colors.white};
-  border: 2px solid ${p => p.theme.colors.bg};
+  border: 1px solid ${p => p.theme.colors.accent};
   border-radius: ${p => p.theme.radii.lg};
 `;
