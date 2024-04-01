@@ -16,7 +16,13 @@ export const Filter = () => {
   return (
     <Label>
       Find by name
-      <Input type="text" name="filter" value={filter} onChange={handleChange} />
+      <Input
+        type="text"
+        name="filter"
+        value={filter}
+        onChange={handleChange}
+        placeholder="Type name here..."
+      />
     </Label>
   );
 };
