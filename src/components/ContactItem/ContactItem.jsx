@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 
 import { deleteContact } from 'redux/contacts/operations';
+
 import { EditContact } from 'components/EditContact/EditContact';
 import { UserAvatar } from 'components/common/UserAvatar/UserAvatar.styled';
 import * as SC from './ContactItem.styled';

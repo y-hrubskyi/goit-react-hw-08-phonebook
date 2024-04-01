@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
+
+import { selectContacts } from 'redux/contacts/selectors';
+
 import { AddContact } from 'components/AddContact/AddContact';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contacts/selectors';
 import { Wrapper } from './ContactsPage.styled';
 
 const Contacts = () => {

@@ -9,8 +9,8 @@ import {
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectFilter } from 'redux/filter/selectors';
 
-import { Table, Placeholder } from './ContactList.styled';
 import { ContactItem } from 'components/ContactItem/ContactItem';
+import { Table, Placeholder } from './ContactList.styled';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
