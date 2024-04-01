@@ -11,6 +11,7 @@ import { selectFilter } from 'redux/filter/selectors';
 
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { Table, Placeholder } from './ContactList.styled';
+import { Loader } from 'components/common/Loader/Loader';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -27,11 +28,12 @@ export const ContactList = () => {
   const results = contacts.length;
   if (!results && !filter && !error && !isLoading)
     filterInfo = 'Your contact list is empty';
-  if (!results && filter && !error && !isLoading) filterInfo = 'Not Finded';
+  if (!results && filter && !error && !isLoading)
+    filterInfo = 'No contacts found';
 
   return (
     <>
-      {isLoading && <Placeholder>LOADING CONTACTS...</Placeholder>}
+      {isLoading && <Loader />}
       {error && <Placeholder> Something went wrong</Placeholder>}
       {!isLoading && !error && contacts.length ? (
         <Table>
