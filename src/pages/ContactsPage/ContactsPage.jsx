@@ -1,4 +1,4 @@
-import { ContactForm } from 'components/ContactForm/ContactForm';
+import { AddContact } from 'components/AddContact/AddContact';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ const Contacts = () => {
       <h2>Contact List</h2>
       {contacts.length > 0 && <Filter />}
       <ContactList />
-      <ContactForm />
+      <AddContact />
     </Wrapper>
   );
 };

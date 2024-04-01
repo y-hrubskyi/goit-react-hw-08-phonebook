@@ -12,14 +12,14 @@ import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
 import { IconBtn } from 'components/common/IconBtn/IconBtn';
-import { AddIcon } from './ContactForm.styled';
+import { AddIcon } from './AddContact.styled';
 
 const contactsSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short').required('Required'),
   number: Yup.string().min(7, 'Must be 7 or more').required('Required'),
 });
 
-export const ContactForm = () => {
+export const AddContact = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
