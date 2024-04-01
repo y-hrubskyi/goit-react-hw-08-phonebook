@@ -15,7 +15,7 @@ const contactsSchema = Yup.object().shape({
   number: Yup.string().min(7, 'Must be 7 or more').required('Required'),
 });
 
-export const ContactEditor = ({
+export const EditContact = ({
   contact: { id, name, number },
   isOpen,
   onClose,
