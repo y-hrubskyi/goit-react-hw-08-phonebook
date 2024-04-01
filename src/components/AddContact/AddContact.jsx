@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 
@@ -14,19 +13,12 @@ import { ModalBase } from 'components/common/ModalBase/ModalBase';
 import { FormBase } from 'components/common/FormBase/FormBase';
 import { FormField } from 'components/common/FormField/FormField';
 import { SubmitBtn } from 'components/common/SubmitBtn/SubmitBtn';
-import { IconBtn } from 'components/common/IconBtn/IconBtn';
 import { ToastMessage } from 'components/common/ToastMessage/ToastMessage';
-import { AddIcon } from './AddContact.styled';
 
-export const AddContact = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+export const AddContact = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsModifyLoading);
-
-  const toggleModal = () => {
-    setIsOpen(prevState => !prevState);
-  };
 
   const handleSubmit = async (values, actions) => {
     const isExist = isInContacts(contacts, values.name);
@@ -42,27 +34,20 @@ export const AddContact = () => {
       error: <ToastMessage>Failed to add contact. Try again.</ToastMessage>,
     });
     actions.resetForm();
-    toggleModal();
+    onClose();
   };
 
   return (
-    <>
-      <IconBtn type="button" onClick={toggleModal}>
-        <AddIcon />
-      </IconBtn>
-      {modalIsOpen && (
-        <ModalBase isOpen={modalIsOpen} onClose={toggleModal}>
-          <FormBase
-            initialValues={{ name: '', number: '' }}
-            onSubmit={handleSubmit}
-            validationSchema={contactSchema}
-          >
-            <FormField label="Name" type="text" name="name" />
-            <FormField label="Number" type="tel" name="number" />
-            <SubmitBtn isLoading={isLoading}>Add contact</SubmitBtn>
-          </FormBase>
-        </ModalBase>
-      )}
-    </>
+    <ModalBase isOpen={isOpen} onClose={onClose}>
+      <FormBase
+        initialValues={{ name: '', number: '' }}
+        onSubmit={handleSubmit}
+        validationSchema={contactSchema}
+      >
+        <FormField label="Name" type="text" name="name" />
+        <FormField label="Number" type="tel" name="number" />
+        <SubmitBtn isLoading={isLoading}>Add contact</SubmitBtn>
+      </FormBase>
+    </ModalBase>
   );
 };

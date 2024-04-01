@@ -34,7 +34,7 @@ export const ContactList = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {error && <Placeholder> Something went wrong</Placeholder>}
+      {error && <Placeholder>Oops! Something went wrong</Placeholder>}
       {!isLoading && !error && contacts.length ? (
         <Table>
           <tbody>

@@ -21,4 +21,5 @@ export const Main = styled.main`
   display: flex;
   justify-content: center;
   flex-grow: 1;
+  padding-bottom: ${p => p.theme.spacing(5)};
 `;
