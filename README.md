@@ -73,8 +73,8 @@ goit-react-hw-08-phonebook/
 
 ## Getting Started
 
-These instructions will help you set up and run the Movie Finder App on your
-local machine for development and testing purposes.
+These instructions will help you set up and run the Phonebook App on your local
+machine for development and testing purposes.
 
 ### Prerequisites
 
