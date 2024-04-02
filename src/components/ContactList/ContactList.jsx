@@ -6,8 +6,8 @@ import {
   selectFilteredContacts,
   selectIsGetLoading,
 } from 'redux/contacts/selectors';
-import { fetchContacts } from 'redux/contacts/operations';
 import { selectFilter } from 'redux/filter/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
 
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { Table, Placeholder } from './ContactList.styled';
@@ -24,18 +24,21 @@ export const ContactList = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  let filterInfo = '';
   const results = contacts.length;
-  if (!results && !filter && !error && !isLoading)
-    filterInfo = 'Your contact list is empty';
-  if (!results && filter && !error && !isLoading)
-    filterInfo = 'No contacts found';
+  let filterResult = `Total: ${results}`;
+  if (results && (filter.name || filter.number))
+    filterResult = `Found: ${results}`;
+  if (!results && (filter.name || filter.number))
+    filterResult = 'No contacts found';
+  if (!results && !filter.name && !filter.number)
+    filterResult = 'Your contact list is empty';
 
   return (
     <>
       {isLoading && <Loader />}
       {error && <Placeholder>Oops! Something went wrong</Placeholder>}
-      {!isLoading && !error && contacts.length ? (
+      {!isLoading && !error && <Placeholder>{filterResult}</Placeholder>}
+      {!isLoading && !error && contacts.length > 0 && (
         <Table>
           <tbody>
             {contacts.map(contact => (
@@ -43,8 +46,6 @@ export const ContactList = () => {
             ))}
           </tbody>
         </Table>
-      ) : (
-        <Placeholder>{filterInfo}</Placeholder>
       )}
     </>
   );
