@@ -14,7 +14,7 @@ export const PageTitle = styled.h1`
 `;
 
 export const AccentText = styled.span`
-  color: green;
+  color: ${p => p.theme.colors.accent};
 `;
 
 export const HeroContainer = styled.div`
