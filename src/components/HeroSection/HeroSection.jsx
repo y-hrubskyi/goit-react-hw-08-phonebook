@@ -18,7 +18,7 @@ export const HeroSection = () => {
           Easily manage your contacts and stay organized. Find, add, edit, and
           delete contacts with ease.
         </HeroTitle>
-        <StyledLink to="/contacts">Let's go</StyledLink>
+        <StyledLink to="/contacts">Contact Central</StyledLink>
       </HeroContainer>
     </Hero>
   );

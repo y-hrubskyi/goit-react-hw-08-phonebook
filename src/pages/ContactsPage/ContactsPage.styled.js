@@ -8,11 +8,17 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: ${p => p.theme.spacing(5)};
+  width: 100%;
 `;
 
 export const BtnWrapper = styled.div`
   position: absolute;
-  right: 20px;
+  right: 10%;
+  top: 28px;
+
+  @media screen and (min-width: 568px) {
+    right: 25%;
+  }
 `;
 
 export const AddBtn = styled.button`

@@ -14,10 +14,12 @@ export const selectFilteredContacts = createSelector(
   (contacts, filter) => {
     const formattedFilter = filter.name.toLowerCase();
 
-    return contacts.filter(
-      ({ name, number }) =>
-        name.toLowerCase().includes(formattedFilter) &&
-        number.includes(filter.number)
-    );
+    return contacts
+      .filter(
+        ({ name, number }) =>
+          name.toLowerCase().includes(formattedFilter) &&
+          number.includes(filter.number)
+      )
+      .sort((a, b) => a.name.localeCompare(b.name));
   }
 );

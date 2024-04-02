@@ -14,7 +14,7 @@ export const PageTitle = styled.h1`
 `;
 
 export const AccentText = styled.span`
-  color: green;
+  color: ${p => p.theme.colors.accent};
 `;
 
 export const HeroContainer = styled.div`
@@ -47,9 +47,9 @@ export const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 40px;
+  align-self: flex-start;
   margin-right: 28%;
+  padding: ${p => p.theme.spacing(2)} ${p => p.theme.spacing(5)};
 
   font-weight: 600;
   text-align: center;
