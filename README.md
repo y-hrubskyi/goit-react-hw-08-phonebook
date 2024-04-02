@@ -20,12 +20,12 @@ Include demo GIF to visually showcase the application.
 
 ## Features
 
-- **User Authentication**: Register securely with unique credentials. Login
+- **User Authentication:** Register securely with unique credentials. Login
   easily to access your account.
-- **Contact Management**: Add, edit, and delete contacts effortlessly.
-- **Search Functionality**: Find contacts quickly by name or number.
-- **Data Persistence**: Securely store your contact data.
-- **User-Friendly Interface**: Enjoy a seamless experience with an intuitive,
+- **Contact Management:** Add, edit, and delete contacts effortlessly.
+- **Search Functionality:** Find contacts quickly by name or number.
+- **Data Persistence:** Securely store your contact data.
+- **User-Friendly Interface:** Enjoy a seamless experience with an intuitive,
   attractive and responsive design.
 
 ## Tech Stack
@@ -35,6 +35,8 @@ Include demo GIF to visually showcase the application.
   - Styled Components: For styling and theming components in a dynamic and
     maintainable way.
   - React Router: Declarative routing in single-page applications.
+  - Redux Toolkit: State management library for handling application-level
+    state.
   - Axios: JavaScript library for making HTTP requests from the browser.
   - react-hot-toast: React notifications library for displaying toast messages.
 - **Backend:**
