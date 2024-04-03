@@ -41,7 +41,7 @@ Include demo GIF to visually showcase the application.
   - react-hot-toast: React notifications library for displaying toast messages.
 - **Backend:**
   - [Connections API](https://connections-api.herokuapp.com/docs/): External API
-    as the backend for retrieving data.
+    as the backend for data operations.
 - **Deployment:**
   - GitHub Pages: Hosting platform for deploying the frontend.
 - **Version Control:**
