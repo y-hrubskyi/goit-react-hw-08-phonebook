@@ -39,7 +39,12 @@ export const ContactItem = ({ contact }) => {
         <SC.ContactNumber>{contact.number}</SC.ContactNumber>
       </SC.TBodyData>
       <SC.TBodyData>
-        <SC.IconBtn type="button" onClick={toggleModal} disabled={isLoading}>
+        <SC.IconBtn
+          type="button"
+          onClick={toggleModal}
+          disabled={isLoading}
+          aria-label="edit contact"
+        >
           <SC.EditIcon />
         </SC.IconBtn>
       </SC.TBodyData>
@@ -48,6 +53,7 @@ export const ContactItem = ({ contact }) => {
           type="button"
           onClick={() => deleteContactFoo(contact.id)}
           disabled={isLoading}
+          aria-label="delete contact"
         >
           <SC.DeleteIcon />
         </SC.IconBtn>

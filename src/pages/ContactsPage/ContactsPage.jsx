@@ -21,7 +21,11 @@ const Contacts = () => {
     <Wrapper>
       <h2>Contact List</h2>
       <BtnWrapper>
-        <AddBtn type="button" onClick={toggleModal}>
+        <AddBtn
+          type="button"
+          onClick={toggleModal}
+          aria-label="add new contact"
+        >
           <AddIcon />
         </AddBtn>
       </BtnWrapper>

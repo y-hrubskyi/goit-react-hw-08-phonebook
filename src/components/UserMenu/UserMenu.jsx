@@ -21,7 +21,7 @@ export const UserMenu = () => {
         <UserAvatar>{user.name[0]}</UserAvatar>
         <SC.UserName>{user.name}</SC.UserName>
       </SC.UserWrapper>
-      <IconBtn type="button" onClick={handleLogout}>
+      <IconBtn type="button" onClick={handleLogout} ariaLabel="log out">
         <SC.LogoutIcon />
       </IconBtn>
     </SC.Wrapper>
