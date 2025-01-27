@@ -40,7 +40,7 @@ Include demo GIF to visually showcase the application.
   - Axios: JavaScript library for making HTTP requests from the browser.
   - react-hot-toast: React notifications library for displaying toast messages.
 - **Backend:**
-  - [Connections API](https://connections-api.herokuapp.com/docs/): External API
+  - [Connections API](https://connections-api.goit.global/docs/): External API
     as the backend for data operations.
 - **Deployment:**
   - GitHub Pages: Hosting platform for deploying the frontend.
